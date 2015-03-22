@@ -26,6 +26,10 @@
                     <ul class="nav navbar-nav">
                         <li class="active"><a href="/index">Home</a></li>
                     </ul>
+                    <ul class="nav navbar-nav pull-right">
+                        <li><a href="/login">Login</a></li>
+                        <li><a href="/register">Register</a></li>
+                    </ul>
                 </div><!--/.nav-collapse -->
             </div>
         </nav>
