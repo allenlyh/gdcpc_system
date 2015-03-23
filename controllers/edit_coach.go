@@ -1,71 +1,91 @@
 package controllers
 
 import (
-	"github.com/astaxie/beego"
+	"fmt"
 	. "gdcpc_system/models"
-	"tools"
-	"strconv"
+	. "gdcpc_system/tools"
+	"github.com/astaxie/beego"
 )
 
-type CoachController struct {
+type EditCoachController struct {
 	beego.Controller
 }
 
-func (this *CoachController) Get() {
+func (this *EditCoachController) Get() {
 	var (
-		err error
-		id string
 		coach Coach
 	)
-	id = this.GetString("uid")
-	table.Uid, err = strconv.Atoi(id)
-	if err == nil && table.Uid != 0 {
-		err = coach.GetInfoById()
-		this.Data["init"] = coach
+	if this.GetSession("logined") != nil {
+		this.Data["logined"] = 1
+	} else {
+		this.Data["warning"] = "Please login!"
+		this.TplNames = "warning.tpl"
+		return
 	}
+	this.Data["uid"] = this.GetSession("uid")
+	this.Data["username"] = this.GetSession("username")
+	coach.Uid = this.GetSession("uid").(int)
+	coach.GetInfoById()
+	fmt.Println(coach.Name)
+	this.Data["init"] = coach
 	this.TplNames = "edit_coach.tpl"
 }
 
-func (this *CoachController) Post() {
+func (this *EditCoachController) Post() {
 	var (
-		coach Coach
+		coach     Coach
 		check_err error
-		err error
+		_         error
+		old_pwd   string
+		new_pwd1  string
+		new_pwd2  string
 	)
-	coach.Uid, err = strconv.Atoi(this.GetString("uid"))
-	err = coach.GetInfoById()
-	coach.Username, check_err = CheckUserName(this.GetString("username"))
-	if check_err != nil {
-		this.Data["warning"] = check_err
+	if this.GetSession("logined") != nil {
+		this.Data["logined"] = 1
+	} else {
+		this.Data["warning"] = "Please login!"
+		this.TplNames = "warning.tpl"
+		return
+	}
+	this.Data["uid"] = this.GetSession("uid")
+	this.Data["username"] = this.GetSession("username")
+	coach.Uid = this.GetSession("uid").(int)
+	coach.GetInfoById()
+	this.Data["init"] = coach
+	old_pwd, check_err = GetMD5Pwd(this.GetString("old_password"))
+	if old_pwd != coach.Password {
+		this.Data["warning"] = "Wroing old password!"
 		this.TplNames = "edit_coach.tpl"
 		return
 	}
-	coach.Password, check_err = GetMD5Pwd(this.GetString("password"))
-	if check_err != nil {
-		this.Data["warning"] = check_err
-		this.TplNames = "edit_coach.tpl"
+	new_pwd1 = this.GetString("new_password1")
+	if len(new_pwd1) != 0 {
+		new_pwd1, check_err = GetMD5Pwd(new_pwd1)
+		new_pwd2, check_err = GetMD5Pwd(this.GetString("new_password2"))
+		if new_pwd2 != new_pwd1 {
+			this.Data["warning"] = "Your passwords do not match!"
+			this.TplNames = "edit_coach.tpl"
+			return
+		}
+		if check_err != nil {
+			this.Data["warning"] = check_err
+			this.TplNames = "edit_coach.tpl"
+			return
+		}
+		coach.Password = new_pwd1
 	}
-	coach.NickName, check_err = CheckNotEmpty(this.GetString("nickname"))
+	coach.Name, check_err = CheckNotEmpty(this.GetString("name"))
 	if check_err != nil {
-		this.Data["warning"] = "Nickname can't be empty!"
+		this.Data["warning"] = "Name can't be empty!"
 		this.TplNames = "edit_coach.tpl"
+		return
 	}
-	coach.School, check_err = CheckNotEmpty(this.GetString("School"))
+	coach.School, check_err = CheckNotEmpty(this.GetString("school"))
 	if check_err != nil {
 		this.Data["warning"] = "School can't be empty!"
 		this.TplNames = "edit_coach.tpl"
+		return
 	}
-	coack.Email, check_err = CheckEmail(this.GetString("email"))
-	if check_err != nil {
-		this.Data["warning"] = check_err
-		this.TplNames = "edit_coach.tpl"
-	} else {
-		if err == nil && table.Uid != 0 {
-			coach.Update()
-		} else {
-			coach.Insert()
-			this.Data["warning"] = "You have succeeded in registering! Login please!"
-		}
-		this.Redirect("/index", 302)
-	}
+	coach.Update()
+	this.Redirect("/index", 302)
 }

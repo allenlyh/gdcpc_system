@@ -4,8 +4,9 @@
 	<div class="row-fluid">
 		<div class="span12">
 			<h1 class="text-center">
-				Coming soon!
+				Welcome!
 			</h1>
+			<br>
 		</div>
 	</div>
 </div>

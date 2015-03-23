@@ -24,11 +24,20 @@
                 </div>
                 <div class="navbar-collapse collapse">
                     <ul class="nav navbar-nav">
-                        <li class="active"><a href="/index">Home</a></li>
+                        <li><a href="/index">Home</a></li>
+			{{ if $.logined }}
+				<li><a href="/show_file">Personal Profile</a></li>
+                        	<li><a href="/create_team">Create Team</a></li>
+			{{ end }}
                     </ul>
                     <ul class="nav navbar-nav pull-right">
-                        <li><a href="/login">Login</a></li>
-                        <li><a href="/register">Register</a></li>
+			{{ if $.logined }}
+				<li><a href="/show_file">{{.username}}</a></li>
+				<li><a href="/logout">Logout</a></li>
+			{{ else }}
+                  		<li><a href="/login">Login</a></li>
+                        	<li><a href="/reg_coach">Register</a></li>
+			{{ end }}
                     </ul>
                 </div><!--/.nav-collapse -->
             </div>

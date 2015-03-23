@@ -1,11 +1,11 @@
 package main
 
 import (
-	"time"
+	_ "gdcpc_system/routers"
 	"github.com/astaxie/beego"
 	"github.com/astaxie/beego/orm"
 	_ "github.com/go-sql-driver/mysql"
-	_ "gdcpc_system/routers"
+	"time"
 )
 
 const (

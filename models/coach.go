@@ -4,24 +4,36 @@ import (
 	"github.com/astaxie/beego/orm"
 )
 
-
 type Coach struct {
-	Username		string `orm:"pk"`
-	Password	string
-	Name	string	
-	School			string
-	Email	string
-	Teams	[]*Teams `orm:"reverse(many)"`
+	Uid      int `orm:"pk;auto"`
+	Username string
+	Password string
+	Name     string
+	School   string
+	Email    string
+	Teams    []*Teams `orm:"reverse(many)"`
 }
 
 func init() {
 	orm.RegisterModel(new(Coach))
 }
 
-func (this *Coach) GetById(id int) error {
+func (this *Coach) GetInfoById() error {
 	o := orm.NewOrm()
-	err := o.QueryTable("Coach").Filter("uid", id).One(this)
-	return err;
+	err := o.QueryTable("Coach").Filter("uid", this.Uid).One(this)
+	return err
+}
+
+func (this *Coach) GetInfoByUsername() error {
+	o := orm.NewOrm()
+	err := o.QueryTable("Coach").Filter("username", this.Username).One(this)
+	return err
+}
+
+func (this *Coach) CountByUsername() int64 {
+	o := orm.NewOrm()
+	cnt, _ := o.QueryTable("Coach").Filter("Username", this.Username).Count()
+	return cnt
 }
 
 func (this *Coach) GetPwdByUsername(username string) (string, error) {
@@ -31,7 +43,7 @@ func (this *Coach) GetPwdByUsername(username string) (string, error) {
 	return coach.Password, err
 }
 
-func (this *Coach) Register() error {
+func (this *Coach) Insert() error {
 	o := orm.NewOrm()
 	_, err := o.Insert(this)
 	return err
