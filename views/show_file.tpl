@@ -17,8 +17,11 @@
                 		    	<label>Username</label>
 					<p> {{.show.Username}} </p>
 
-                		    	<label>Name</label><br>
-					<p> {{.show.Name}} </p>
+                		    	<label>Chinese Name</label><br>
+					<p> {{.show.Chname}} </p>
+
+                		    	<label>English Name</label><br>
+					<p> {{.show.Enname}} </p>
 
                 		    	<label>Email</label><br>
 					<p> {{.show.Email}} </P>

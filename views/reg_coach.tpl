@@ -26,8 +26,12 @@
                 		    	<label>Password Confirm*</label><br>
                 		    	<input name="password2" type="password"/><br><br>
 
-                		    	<label>Name*</label><br>
-                		    	<input name="name" type="text"/>
+                		    	<label>Chinese Name*</label><br>
+                		    	<input name="chname" type="text"/>
+                		    	<span class="help-block">Your Chinese name.</span><br>
+
+                		    	<label>English Name*</label><br>
+                		    	<input name="enname" type="text"/>
                 		    	<span class="help-block">Your Chinese name.</span><br>
 
                 		    	<label>Email*</label><br>

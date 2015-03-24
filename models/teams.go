@@ -5,24 +5,25 @@ import (
 )
 
 type Teams struct {
-	Tid        int `orm:"pk;auto"`
-	Ch_name    string
-	En_name    string
-	Coach      *Coach `orm:"rel(fk)"`
-	Coachname  string
-	School     string
-	Mem1chname string
-	Mem1enname string
-	Mem1email  string
-	Sex1       int
-	Mem2chname string
-	Mem2enname string
-	Mem2email  string
-	Sex2       int
-	Mem3chname string
-	Mem3enname string
-	Mem3email  string
-	Sex3       int
+	Tid         int `orm:"pk;auto"`
+	Ch_name     string
+	En_name     string
+	Coach       *Coach `orm:"rel(fk)"`
+	Coachnamech string
+	Coachnameen string
+	School      string
+	Mem1chname  string
+	Mem1enname  string
+	Mem1email   string
+	Sex1        int
+	Mem2chname  string
+	Mem2enname  string
+	Mem2email   string
+	Sex2        int
+	Mem3chname  string
+	Mem3enname  string
+	Mem3email   string
+	Sex3        int
 }
 
 func init() {

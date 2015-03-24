@@ -45,7 +45,13 @@ func (this *RegCoachController) Post() {
 		this.TplNames = "reg_coach.tpl"
 		return
 	}
-	coach.Name, check_err = CheckNotEmpty(this.GetString("name"))
+	coach.Chname, check_err = CheckNotEmpty(this.GetString("chname"))
+	if check_err != nil {
+		this.Data["warning"] = "Name can't be empty!"
+		this.TplNames = "reg_coach.tpl"
+		return
+	}
+	coach.Enname, check_err = CheckNotEmpty(this.GetString("enname"))
 	if check_err != nil {
 		this.Data["warning"] = "Name can't be empty!"
 		this.TplNames = "reg_coach.tpl"

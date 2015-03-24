@@ -129,8 +129,9 @@ func (this *CreateTeamController) Post() {
 	}
 	team.Sex3, check_err = strconv.Atoi(this.GetString("sex3"))
 	team.Coach = &coach
-	team.Coachname = coach.Name
 	team.School = coach.School
+	team.Coachnamech = coach.Chname
+	team.Coachnameen = coach.Enname
 	fmt.Println(err)
 	if err == nil && team.Tid != 0 {
 		team.Update()

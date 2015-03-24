@@ -1,7 +1,6 @@
 package controllers
 
 import (
-	"fmt"
 	. "gdcpc_system/models"
 	. "gdcpc_system/tools"
 	"github.com/astaxie/beego"
@@ -26,7 +25,6 @@ func (this *EditCoachController) Get() {
 	this.Data["username"] = this.GetSession("username")
 	coach.Uid = this.GetSession("uid").(int)
 	coach.GetInfoById()
-	fmt.Println(coach.Name)
 	this.Data["init"] = coach
 	this.TplNames = "edit_coach.tpl"
 }
@@ -74,7 +72,13 @@ func (this *EditCoachController) Post() {
 		}
 		coach.Password = new_pwd1
 	}
-	coach.Name, check_err = CheckNotEmpty(this.GetString("name"))
+	coach.Chname, check_err = CheckNotEmpty(this.GetString("chname"))
+	if check_err != nil {
+		this.Data["warning"] = "Name can't be empty!"
+		this.TplNames = "edit_coach.tpl"
+		return
+	}
+	coach.Enname, check_err = CheckNotEmpty(this.GetString("enname"))
 	if check_err != nil {
 		this.Data["warning"] = "Name can't be empty!"
 		this.TplNames = "edit_coach.tpl"

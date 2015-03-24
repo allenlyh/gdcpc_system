@@ -36,7 +36,8 @@
 								<center>{{$key}}</center>
 							</td>
 							<td>
-								<center>{{$val.Coachname}}</center>
+								<center>{{$val.Coachnamech}}</center>
+								<center>{{$val.Coachnameen}}</center>
 							</td>
 							<td>
 								<center>{{$val.School}}</center>
