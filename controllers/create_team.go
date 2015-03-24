@@ -89,6 +89,7 @@ func (this *CreateTeamController) Post() {
 		this.TplNames = "create_team.tpl"
 		return
 	}
+	team.Sex1, check_err = strconv.Atoi(this.GetString("sex1"))
 	team.Mem2chname, check_err = CheckNotEmpty(this.GetString("mem2_chname"))
 	if check_err != nil {
 		this.Data["warning"] = check_err
@@ -107,6 +108,7 @@ func (this *CreateTeamController) Post() {
 		this.TplNames = "create_team.tpl"
 		return
 	}
+	team.Sex2, check_err = strconv.Atoi(this.GetString("sex2"))
 	team.Mem3chname, check_err = CheckNotEmpty(this.GetString("mem3_chname"))
 	if check_err != nil {
 		this.Data["warning"] = check_err
@@ -125,8 +127,10 @@ func (this *CreateTeamController) Post() {
 		this.TplNames = "create_team.tpl"
 		return
 	}
+	team.Sex3, check_err = strconv.Atoi(this.GetString("sex3"))
 	team.Coach = &coach
 	team.Coachname = coach.Name
+	team.School = coach.School
 	fmt.Println(err)
 	if err == nil && team.Tid != 0 {
 		team.Update()

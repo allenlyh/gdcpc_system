@@ -62,19 +62,25 @@
 								<center>{{$val.En_name}}</center>
 							</td>
 							<td>
-								<center>{{$val.Mem1chname}}</center>
-								<center>{{$val.Mem1enname}}</center>
-								<center>{{$val.Mem1email}}</center>
+							<B>
+								<center><font {{if compare $val.Sex1 1}} color="red" {{end}}>{{$val.Mem1chname}}</font></center>
+								<center><font {{if compare $val.Sex1 1}} color="red" {{end}}>{{$val.Mem1enname}}</font></center>
+								<center><font {{if compare $val.Sex1 1}} color="red" {{end}}>{{$val.Mem1email}}</font></center>
+							</B>
 							</td>
 							<td>
-								<center>{{$val.Mem2chname}}</center>
-								<center>{{$val.Mem2enname}}</center>
-								<center>{{$val.Mem2email}}</center>
+							<B>
+								<center><font {{if compare $val.Sex2 1}} color="red" {{end}}>{{$val.Mem2chname}}</font></center>
+								<center><font {{if compare $val.Sex2 1}} color="red" {{end}}>{{$val.Mem2enname}}</font></center>
+								<center><font {{if compare $val.Sex2 1}} color="red" {{end}}>{{$val.Mem2email}}</font></center>
+							</B>
 							</td>
 							<td>
-								<center>{{$val.Mem3chname}}</center>
-								<center>{{$val.Mem3enname}}</center>
-								<center>{{$val.Mem3email}}</center>
+							<B>
+								<center><font {{if compare $val.Sex3 1}} color="red" {{end}}>{{$val.Mem3chname}}</font></center>
+								<center><font {{if compare $val.Sex3 1}} color="red" {{end}}>{{$val.Mem3enname}}</font></center>
+								<center><font {{if compare $val.Sex3 1}} color="red" {{end}}>{{$val.Mem3email}}</font></center>
+							</B>
 							</td>
 							<td>
 								<button type="button" class="btn btn-primary" onclick="window.location='/create_team?tid={{$val.Tid}}'">Edit</button>

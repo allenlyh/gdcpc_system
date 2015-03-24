@@ -36,9 +36,8 @@ func (this *ShowTeamsController) Get() {
 		this.TplNames = "warning.tpl"
 		return
 	}
-	team.Coach = &coach
 	this.Data["uid"] = this.GetSession("uid")
 	this.Data["username"] = this.GetSession("username")
-	this.Data["total_teams"], _ = team.GetTeamsByCoach()
+	this.Data["total_teams"], _ = team.GetAllTeams()
 	this.TplNames = "show_teams.tpl"
 }

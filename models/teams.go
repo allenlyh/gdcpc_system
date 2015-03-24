@@ -10,15 +10,19 @@ type Teams struct {
 	En_name    string
 	Coach      *Coach `orm:"rel(fk)"`
 	Coachname  string
+	School     string
 	Mem1chname string
 	Mem1enname string
 	Mem1email  string
+	Sex1       int
 	Mem2chname string
 	Mem2enname string
 	Mem2email  string
+	Sex2       int
 	Mem3chname string
 	Mem3enname string
 	Mem3email  string
+	Sex3       int
 }
 
 func init() {
@@ -31,6 +35,15 @@ func (this *Teams) GetTeamsByCoach() ([]Teams, error) {
 	)
 	o := orm.NewOrm()
 	_, err := o.QueryTable("teams").Filter("Coach", this.Coach).All(&all)
+	return all, err
+}
+
+func (this *Teams) GetAllTeams() ([]Teams, error) {
+	var (
+		all []Teams
+	)
+	o := orm.NewOrm()
+	_, err := o.QueryTable("teams").OrderBy("School").All(&all)
 	return all, err
 }
 
