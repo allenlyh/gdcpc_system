@@ -126,7 +126,8 @@ func (this *CreateTeamController) Post() {
 		return
 	}
 	team.Coach = &coach
-	team.Coachname = coach.Name
+	team.Coachnamech = coach.Chname
+	team.Coachnameen = coach.Enname
 	fmt.Println(err)
 	if err == nil && team.Tid != 0 {
 		team.Update()

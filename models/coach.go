@@ -8,7 +8,8 @@ type Coach struct {
 	Uid      int `orm:"pk;auto"`
 	Username string
 	Password string
-	Name     string
+	Chname   string
+	Enname   string
 	School   string
 	Email    string
 	Admin    int8     `orm:"default(0)"`
