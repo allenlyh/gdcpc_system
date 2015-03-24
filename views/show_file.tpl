@@ -14,7 +14,6 @@
 						</div>
 					{{ end }}
 					
-					<button type="button" class="btn btn-success" onclick="window.location='/edit_coach'">Edit</button><br>
                 		    	<label>Username</label>
 					<p> {{.show.Username}} </p>
 
@@ -28,7 +27,7 @@
 					<p> {{.show.School}} </p>
 				</fieldset>
 			</form>
-			<button type="button" class="btn btn-success" onclick="window.location='/create_team'">Create Team</button><br>
+<!--			<button type="button" class="btn btn-success" onclick="window.location='/edit_coach'">Setting</button><br> -->
 			<table class="table table-striped table-hover table-bordered">
 				<thead>
 					<tr>
@@ -78,8 +77,8 @@
 								<center>{{$val.Mem3email}}</center>
 							</td>
 							<td>
-								<button type="button" class="btn btn-success" onclick="window.location='/create_team?tid={{$val.Tid}}'">Edit</button><br>
-								<button type="button" class="btn btn-success" onclick="window.location='/action?action=DeleteTeam&tid={{$val.Tid}}'">Delete</button><br>
+								<button type="button" class="btn btn-primary" onclick="window.location='/create_team?tid={{$val.Tid}}'">Edit</button>
+								<button type="button" class="btn btn-danger" onclick="window.location='/action?action=DeleteTeam&tid={{$val.Tid}}'">Delete</button>
 							</td>
 						</tr>
 					{{end}}

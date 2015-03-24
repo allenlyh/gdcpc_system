@@ -17,7 +17,7 @@ func (this *ShowFileController) Get() {
 	)
 	if this.GetSession("logined") == nil {
 		this.Data["warning"] = "Please login!"
-		this.TplNames = "show_file.tpl"
+		this.TplNames = "warning.tpl"
 		return
 	}
 	coach.Uid = this.GetSession("uid").(int)
@@ -30,10 +30,9 @@ func (this *ShowFileController) Get() {
 	if this.GetSession("logined") != nil {
 		this.Data["logined"] = 1
 	}
+	team.Coach = &coach
 	this.Data["uid"] = this.GetSession("uid")
 	this.Data["username"] = this.GetSession("username")
-	team.Coach = &coach
 	this.Data["total_teams"], _ = team.GetTeamsByCoach()
-	this.Data["coachname"] = coach.Name
 	this.TplNames = "show_file.tpl"
 }

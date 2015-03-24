@@ -9,6 +9,7 @@ type Teams struct {
 	Ch_name    string
 	En_name    string
 	Coach      *Coach `orm:"rel(fk)"`
+	Coachname  string
 	Mem1chname string
 	Mem1enname string
 	Mem1email  string

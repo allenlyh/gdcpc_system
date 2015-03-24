@@ -28,6 +28,7 @@
 			{{ if $.logined }}
 				<li><a href="/show_file">Personal Profile</a></li>
                         	<li><a href="/create_team">Create Team</a></li>
+                        	<li><a href="/edit_coach">Setting</a></li>
 			{{ end }}
                     </ul>
                     <ul class="nav navbar-nav pull-right">

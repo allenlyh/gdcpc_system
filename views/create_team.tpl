@@ -22,8 +22,10 @@
 
                 		    	<label>Member 1 chinses name*</label><br>
                 		    	<input name="mem1_chname" type="text" value="{{.init.Mem1chname}}"/><br>
+					<span class="help-block">Your Chinese name. Example: 张三丰</span> 
                 		    	<label>Member 1 english name*</label><br>
                 		    	<input name="mem1_enname" type="text" value="{{.init.Mem1enname}}"/><br>
+					<span class="help-block">The phonetic transcription of your Chinese name. Example: ZhangSanfeng (Without blank!!)</span> 
                 		    	<label>Member 1 email*</label><br>
                 		    	<input name="mem1_email" type="text" value="{{.init.Mem1email}}"/><br>
 					

@@ -36,8 +36,6 @@ func CheckUserName(username string) (string, error) {
 
 const _EXP_EMAIL = `^[A-Za-z0-9._%+\-]+@[a-z0-9.\-]+\.[a-z]{2,4}$`
 
-//const _EXP_EMAIL = `^[a-zA-Z0-9_\-]+@[a-zA-Z0-9_\-]+\.[a-z]{2,4}$`
-
 func CheckEmail(email string) (string, error) {
 	length := len(email)
 	if length == 0 {
@@ -50,10 +48,16 @@ func CheckEmail(email string) (string, error) {
 	return email, nil
 }
 
+const _EXP_STRING = "^[^'\"`]+$"
+
 func CheckNotEmpty(st string) (string, error) {
 	length := len(st)
 	if length == 0 {
 		return st, errors.New("Please fill in all input fields!")
+	}
+	exp := regexp.MustCompile(_EXP_STRING)
+	if !exp.MatchString(st) {
+		return st, errors.New("Invalid!")
 	}
 	return st, nil
 }
@@ -67,4 +71,32 @@ func GetMD5Pwd(password string) (string, error) {
 		return Md5Pwd, errors.New("Password's length must be more than 5 and less then 21!")
 	}
 	return Md5Pwd, nil
+}
+
+const _EXP_ENGLISH = `^[a-zA-Z0-9._\-]+$`
+
+func CheckEnglish(st string) (string, error) {
+	length := len(st)
+	if length == 0 {
+		return st, errors.New("Please fill in all input fields!")
+	}
+	exp := regexp.MustCompile(_EXP_ENGLISH)
+	if !exp.MatchString(st) {
+		return st, errors.New("Invalid English team name!")
+	}
+	return st, nil
+}
+
+const _EXP_PT = `^[ a-zA-Z]+$`
+
+func CheckPT(st string) (string, error) {
+	length := len(st)
+	if length == 0 {
+		return st, errors.New("Please fill in all input fields!")
+	}
+	exp := regexp.MustCompile(_EXP_ENGLISH)
+	if !exp.MatchString(st) {
+		return st, errors.New("Invalid English member name!")
+	}
+	return st, nil
 }

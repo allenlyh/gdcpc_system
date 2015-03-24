@@ -27,7 +27,8 @@
                 		    	<input name="password2" type="password"/><br><br>
 
                 		    	<label>Name*</label><br>
-                		    	<input name="name" type="text"/><br><br>
+                		    	<input name="name" type="text"/>
+                		    	<span class="help-block">Your Chinese name.</span><br>
 
                 		    	<label>Email*</label><br>
 					<input name="email" type="text"/><br><br>

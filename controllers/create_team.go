@@ -1,6 +1,7 @@
 package controllers
 
 import (
+	"fmt"
 	. "gdcpc_system/models"
 	. "gdcpc_system/tools"
 	"github.com/astaxie/beego"
@@ -51,14 +52,20 @@ func (this *CreateTeamController) Post() {
 	this.Data["username"] = this.GetSession("username")
 	coach.Uid = this.GetSession("uid").(int)
 	coach.GetInfoById()
-	team.Tid, err = strconv.Atoi(this.GetString("Tid"))
+	team.Tid, err = strconv.Atoi(this.GetString("tid"))
+
+	if err == nil && team.Tid != 0 {
+		team.GetInfoById()
+		this.Data["init"] = team
+	}
+
 	team.Ch_name, check_err = CheckNotEmpty(this.GetString("chinese_name"))
 	if check_err != nil {
 		this.Data["warning"] = check_err
 		this.TplNames = "create_team.tpl"
 		return
 	}
-	team.En_name, check_err = CheckNotEmpty(this.GetString("english_name"))
+	team.En_name, check_err = CheckEnglish(this.GetString("english_name"))
 	if check_err != nil {
 		this.Data["warning"] = check_err
 		this.TplNames = "create_team.tpl"
@@ -70,7 +77,7 @@ func (this *CreateTeamController) Post() {
 		this.TplNames = "create_team.tpl"
 		return
 	}
-	team.Mem1enname, check_err = CheckNotEmpty(this.GetString("mem1_enname"))
+	team.Mem1enname, check_err = CheckPT(this.GetString("mem1_enname"))
 	if check_err != nil {
 		this.Data["warning"] = check_err
 		this.TplNames = "create_team.tpl"
@@ -88,7 +95,7 @@ func (this *CreateTeamController) Post() {
 		this.TplNames = "create_team.tpl"
 		return
 	}
-	team.Mem2enname, check_err = CheckNotEmpty(this.GetString("mem2_enname"))
+	team.Mem2enname, check_err = CheckPT(this.GetString("mem2_enname"))
 	if check_err != nil {
 		this.Data["warning"] = check_err
 		this.TplNames = "create_team.tpl"
@@ -106,7 +113,7 @@ func (this *CreateTeamController) Post() {
 		this.TplNames = "create_team.tpl"
 		return
 	}
-	team.Mem3enname, check_err = CheckNotEmpty(this.GetString("mem3_enname"))
+	team.Mem3enname, check_err = CheckPT(this.GetString("mem3_enname"))
 	if check_err != nil {
 		this.Data["warning"] = check_err
 		this.TplNames = "create_team.tpl"
@@ -119,6 +126,8 @@ func (this *CreateTeamController) Post() {
 		return
 	}
 	team.Coach = &coach
+	team.Coachname = coach.Name
+	fmt.Println(err)
 	if err == nil && team.Tid != 0 {
 		team.Update()
 	} else {

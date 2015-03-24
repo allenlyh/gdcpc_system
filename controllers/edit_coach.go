@@ -54,7 +54,7 @@ func (this *EditCoachController) Post() {
 	this.Data["init"] = coach
 	old_pwd, check_err = GetMD5Pwd(this.GetString("old_password"))
 	if old_pwd != coach.Password {
-		this.Data["warning"] = "Wroing old password!"
+		this.Data["warning"] = "Wrong old password!"
 		this.TplNames = "edit_coach.tpl"
 		return
 	}
@@ -87,5 +87,5 @@ func (this *EditCoachController) Post() {
 		return
 	}
 	coach.Update()
-	this.Redirect("/index", 302)
+	this.Redirect("/show_file", 302)
 }
