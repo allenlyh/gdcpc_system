@@ -33,6 +33,7 @@ func (this *ShowFileController) Get() {
 	team.Coach = &coach
 	this.Data["uid"] = this.GetSession("uid")
 	this.Data["username"] = this.GetSession("username")
-	this.Data["total_teams"], _ = team.GetTeamsByCoach()
+	this.Data["zh_teams"], _ = team.GetTeamsByCoach("ZhuHai")
+	this.Data["gz_teams"], _ = team.GetTeamsByCoach("GuangZhou")
 	this.TplNames = "show_file.tpl"
 }

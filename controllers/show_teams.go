@@ -38,6 +38,7 @@ func (this *ShowTeamsController) Get() {
 	}
 	this.Data["uid"] = this.GetSession("uid")
 	this.Data["username"] = this.GetSession("username")
-	this.Data["total_teams"], _ = team.GetAllTeams()
+	this.Data["zh_teams"], _ = team.GetTeamsByCoach("ZhuHai")
+	this.Data["gz_teams"], _ = team.GetTeamsByCoach("GuangZhou")
 	this.TplNames = "show_teams.tpl"
 }

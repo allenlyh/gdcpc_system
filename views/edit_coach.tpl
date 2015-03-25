@@ -28,8 +28,11 @@
                 		    	<label>New Password Confirm</label><br>
                 		    	<input name="new_password2" type="password"/><br><br>
 
-                		    	<label>Name</label><br>
-                		    	<input name="name" type="text" value="{{.init.Name}}"/><br><br>
+                		    	<label>Chinese Name*</label><br>
+                		    	<input name="chname" type="text" value="{{.init.Chname}}"/><br><br>
+
+                		    	<label>English Name*</label><br>
+                		    	<input name="enname" type="text" value="{{.init.Enname}}"/><br><br>
 
                 		    	<label>School Name</label><br>
 					<input name="school" type="text" value="{{.init.School}}"/><br><br>

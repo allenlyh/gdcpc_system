@@ -28,11 +28,11 @@
 
                 		    	<label>Chinese Name*</label><br>
                 		    	<input name="chname" type="text"/>
-                		    	<span class="help-block">Your Chinese name.</span><br>
+					<span class="help-block">Your Chinese name. Example: 张三丰</span> 
 
                 		    	<label>English Name*</label><br>
                 		    	<input name="enname" type="text"/>
-                		    	<span class="help-block">Your Chinese name.</span><br>
+					<span class="help-block">The phonetic transcription of your Chinese name. Example: ZhangSanfeng (Without blank!!)</span> 
 
                 		    	<label>Email*</label><br>
 					<input name="email" type="text"/><br><br>

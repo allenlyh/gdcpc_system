@@ -9,6 +9,7 @@ type Teams struct {
 	Ch_name     string
 	En_name     string
 	Coach       *Coach `orm:"rel(fk)"`
+	Region      string
 	Coachnamech string
 	Coachnameen string
 	School      string
@@ -30,21 +31,21 @@ func init() {
 	orm.RegisterModel(new(Teams))
 }
 
-func (this *Teams) GetTeamsByCoach() ([]Teams, error) {
+func (this *Teams) GetTeamsByCoach(region string) ([]Teams, error) {
 	var (
 		all []Teams
 	)
 	o := orm.NewOrm()
-	_, err := o.QueryTable("teams").Filter("Coach", this.Coach).All(&all)
+	_, err := o.QueryTable("teams").Filter("Coach", this.Coach).Filter("Region", region).All(&all)
 	return all, err
 }
 
-func (this *Teams) GetAllTeams() ([]Teams, error) {
+func (this *Teams) GetAllTeams(region string) ([]Teams, error) {
 	var (
 		all []Teams
 	)
 	o := orm.NewOrm()
-	_, err := o.QueryTable("teams").OrderBy("School").All(&all)
+	_, err := o.QueryTable("teams").Filter("Region", region).OrderBy("School").All(&all)
 	return all, err
 }
 

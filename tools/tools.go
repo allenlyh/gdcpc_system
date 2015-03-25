@@ -57,7 +57,7 @@ func CheckNotEmpty(st string) (string, error) {
 	}
 	exp := regexp.MustCompile(_EXP_STRING)
 	if !exp.MatchString(st) {
-		return st, errors.New("Invalid!")
+		return st, errors.New("Invalid character!")
 	}
 	return st, nil
 }

@@ -37,6 +37,7 @@ func (this *EditCoachController) Post() {
 		old_pwd   string
 		new_pwd1  string
 		new_pwd2  string
+		flag      int
 	)
 	if this.GetSession("logined") != nil {
 		this.Data["logined"] = 1
@@ -50,11 +51,11 @@ func (this *EditCoachController) Post() {
 	coach.Uid = this.GetSession("uid").(int)
 	coach.GetInfoById()
 	this.Data["init"] = coach
+	flag = 0
 	old_pwd, check_err = GetMD5Pwd(this.GetString("old_password"))
 	if old_pwd != coach.Password {
 		this.Data["warning"] = "Wrong old password!"
-		this.TplNames = "edit_coach.tpl"
-		return
+		flag = 1
 	}
 	new_pwd1 = this.GetString("new_password1")
 	if len(new_pwd1) != 0 {
@@ -62,34 +63,34 @@ func (this *EditCoachController) Post() {
 		new_pwd2, check_err = GetMD5Pwd(this.GetString("new_password2"))
 		if new_pwd2 != new_pwd1 {
 			this.Data["warning"] = "Your passwords do not match!"
-			this.TplNames = "edit_coach.tpl"
-			return
+			flag = 1
 		}
 		if check_err != nil {
 			this.Data["warning"] = check_err
-			this.TplNames = "edit_coach.tpl"
-			return
+			flag = 1
 		}
-		coach.Password = new_pwd1
 	}
 	coach.Chname, check_err = CheckNotEmpty(this.GetString("chname"))
 	if check_err != nil {
-		this.Data["warning"] = "Name can't be empty!"
-		this.TplNames = "edit_coach.tpl"
-		return
+		this.Data["warning"] = check_err
+		flag = 1
 	}
 	coach.Enname, check_err = CheckNotEmpty(this.GetString("enname"))
 	if check_err != nil {
-		this.Data["warning"] = "Name can't be empty!"
-		this.TplNames = "edit_coach.tpl"
-		return
+		this.Data["warning"] = check_err
+		flag = 1
 	}
 	coach.School, check_err = CheckNotEmpty(this.GetString("school"))
 	if check_err != nil {
-		this.Data["warning"] = "School can't be empty!"
+		this.Data["warning"] = check_err
+		flag = 1
+	}
+	if flag == 1 {
+		this.Data["init"] = coach
 		this.TplNames = "edit_coach.tpl"
 		return
 	}
+	coach.Password = new_pwd1
 	coach.Update()
 	this.Redirect("/show_file", 302)
 }
