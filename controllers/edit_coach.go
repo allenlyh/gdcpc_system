@@ -90,7 +90,9 @@ func (this *EditCoachController) Post() {
 		this.TplNames = "edit_coach.tpl"
 		return
 	}
-	coach.Password = new_pwd1
+	if len(new_pwd1) != 0 {
+		coach.Password = new_pwd1
+	}
 	coach.Update()
 	this.Redirect("/show_file", 302)
 }

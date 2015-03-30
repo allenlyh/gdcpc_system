@@ -13,19 +13,23 @@
 							{{.warning}}
 						</div>
 					{{ end }}
-					
-                		    	<label>Chinese name*</label><br>
-                		    	<input name="chinese_name" type="text" value="{{.init.Ch_name}}"/><br>
-
-                		    	<label>English name*</label><br>
-                		    	<input name="english_name" type="text" value="{{.init.En_name}}"/><br>
-
 				       	<label class="radio-inline">
 				       		<input type="radio"  value="ZhuHai" name="region" {{if compare .init.Region "ZhuHai"}} checked="true" {{end}}><label id="radio_label">珠海赛区</label>
 					</label>
 				       	<label class="radio-inline">
 				       		<input type="radio"  value="GuangZhou" name="region" {{if compare .init.Region "GuangZhou"}} checked="true" {{end}}><label id="radio_label">广州赛区</label>
 				       	</label><br>
+					
+                		    	<label>Chinese name*</label><br>
+                		    	<input name="chinese_name" type="text" value="{{.init.Ch_name}}"/><br>
+								<span class="help-block">Please add the abbreviation of your school in front of your team name!</span> 
+								<span class="help-block">Example: 中山大学_一队</span> 
+
+                		    	<label>English name*</label><br>
+                		    	<input name="english_name" type="text" value="{{.init.En_name}}"/><br>
+								<span class="help-block">Please add the abbreviation of your school in front of your team name!</span> 
+								<span class="help-block">Example: SYSU_Team1</span> 
+
 
                 		    	<label>Member 1 chinses name*</label><br>
                 		    	<input name="mem1_chname" type="text" value="{{.init.Mem1chname}}"/><br>
