@@ -94,5 +94,6 @@ func (this *EditCoachController) Post() {
 		coach.Password = new_pwd1
 	}
 	coach.Update()
+	UpdateTeamsByCoach(coach)
 	this.Redirect("/show_file", 302)
 }

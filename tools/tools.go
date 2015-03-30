@@ -7,6 +7,7 @@ import (
 	"errors"
 	"fmt"
 	"regexp"
+	. "gdcpc_system/models"
 )
 
 func isJSONString(s string) bool {
@@ -99,4 +100,28 @@ func CheckPT(st string) (string, error) {
 		return st, errors.New("Invalid English member name!")
 	}
 	return st, nil
+}
+
+func UpdateTeamsByCoach(coach Coach) error {
+	var (
+			team  Teams
+			teams []Teams
+			_     error
+	)
+	team.Coach = &coach
+	teams, _ = team.GetTeamsByCoach("ZhuHai")
+	for _, val := range teams {
+		val.School = coach.School
+			val.Coachnamech = coach.Chname
+			val.Coachnameen = coach.Enname
+			val.Update()
+	}
+	teams, _ = team.GetTeamsByCoach("GuangZhou")
+	for _, val := range teams {
+		val.School = coach.School
+			val.Coachnamech = coach.Chname
+			val.Coachnameen = coach.Enname
+			val.Update()
+	}
+	return nil
 }
