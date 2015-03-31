@@ -14,8 +14,9 @@ type CreateTeamController struct {
 
 func (this *CreateTeamController) Get() {
 	var (
-		team Teams
-		err  error
+		team  Teams
+		err   error
+		coach Coach
 	)
 	if this.GetSession("logined") != nil {
 		this.Data["logined"] = 1
@@ -27,8 +28,15 @@ func (this *CreateTeamController) Get() {
 	this.Data["uid"] = this.GetSession("uid")
 	this.Data["username"] = this.GetSession("username")
 	team.Tid, err = strconv.Atoi(this.GetString("tid"))
+	coach.Uid = this.GetSession("uid").(int)
+	coach.GetInfoById()
 	if err == nil && team.Tid != 0 {
 		team.GetInfoById()
+		if team.Coach.Uid != coach.Uid {
+			this.Data["warning"] = "Illegel operation!"
+			this.TplNames = "warning.tpl"
+			return
+		}
 		this.Data["init"] = team
 	}
 	this.TplNames = "create_team.tpl"
@@ -55,6 +63,14 @@ func (this *CreateTeamController) Post() {
 	coach.GetInfoById()
 	flag = 0
 	team.Tid, err = strconv.Atoi(this.GetString("tid"))
+	if err == nil && team.Tid != 0 {
+		team.GetInfoById()
+		if team.Coach.Uid != coach.Uid {
+			this.Data["warning"] = "Illegel operation!"
+			this.TplNames = "warning.tpl"
+			return
+		}
+	}
 
 	team.Region, check_err = CheckNotEmpty(this.GetString("region"))
 	if check_err != nil {
