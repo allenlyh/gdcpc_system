@@ -38,10 +38,20 @@
 					<input name="school" type="text" value="{{.init.School}}"/><br><br>
 
                 		    	<label>T-shirt</label><br>
-					<input name="tshirt" type="text" value="{{.init.Tshirt}}"/><br><br>
+					<input name="tshirt" type="text" value="{{.init.Tshirt}}"/>
+								<span class="help-block">可选码数: M，L，XL, XXL, XXXL</span> 
 
-                		    	<label>5月23日晚需要在大学城东苑宾馆住宿名单（包括教练以及队员，以逗号隔开）</label><br>
-					<input name="accomodate" type="text" value="{{.init.Accomodate}}"/><br><br>
+                		    	<label>5月23日晚需要在大学城东苑宾馆住宿名单</label><br>
+					<input name="accomodate" type="text" value="{{.init.Accomodate}}"/>
+								<span class="help-block">包括教练以及队员，以逗号隔开</span> 
+
+                		    	<label>是否愿意拼房</label><br>
+				       	<label class="radio-inline">
+				       		<input type="radio"  value="0" name="shareroom" {{if compare .init.Shareroom 0}} checked="true" {{end}}><label id="radio_label">愿意</label>
+					</label>
+				       	<label class="radio-inline">
+				       		<input type="radio"  value="1" name="shareroom" {{if compare .init.Shareroom 1}} checked="true" {{end}}><label id="radio_label">不愿意</label>
+				       	</label><br>
 
 				    	<input type="hidden" name="uid" value="{{.init.Uid}}">
 					<button type="submit" class="btn btn-success">Submit</button>

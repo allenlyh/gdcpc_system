@@ -4,6 +4,7 @@ import (
 	. "gdcpc_system/models"
 	. "gdcpc_system/tools"
 	"github.com/astaxie/beego"
+	"strconv"
 )
 
 type EditCoachController struct {
@@ -87,6 +88,7 @@ func (this *EditCoachController) Post() {
 	}
 	coach.Accomodate = this.GetString("accomodate")
 	coach.Tshirt = this.GetString("tshirt")
+	coach.Shareroom, check_err = strconv.Atoi(this.GetString("shareroom"))
 	if flag == 1 {
 		this.Data["init"] = coach
 		this.TplNames = "edit_coach.tpl"

@@ -34,6 +34,8 @@
 
                 		    	<label>5月23日晚需要在大学城东苑宾馆住宿名单（包括教练以及队员）</label><br>
 					<p> {{.show.Accomodate}} </p>
+
+					<label>{{if compare .show.Shareroom 0}} 愿意 {{else}} 不愿意 {{end}} 拼房 </label>
 				</fieldset>
 			</form>
 <!--			<button type="button" class="btn btn-success" onclick="window.location='/edit_coach'">Setting</button><br> -->

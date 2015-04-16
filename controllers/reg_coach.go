@@ -70,6 +70,7 @@ func (this *RegCoachController) Post() {
 		return
 	}
 	coach.Tshirt = this.GetString("tshirt")
+	coach.Shareroom = 0
 
 	coach.Insert()
 	this.SetSession("logined", 1)

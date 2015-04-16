@@ -13,6 +13,7 @@ type Coach struct {
 	School   string
 	Email    string
 	Tshirt	string
+	Shareroom int
 	Accomodate	string
 	Admin    int8     `orm:"default(0)"`
 	Teams    []*Teams `orm:"reverse(many)"`

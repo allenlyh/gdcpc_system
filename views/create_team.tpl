@@ -1,5 +1,9 @@
 {{template "head.tpl" .}}
 
+<style>
+img{ width:200px; height:150px; margin:0 auto; }
+</style>
+
 <div class="container theme-showcase" role="main">
 	<div class="row">
 		<div class="span12">
@@ -80,7 +84,9 @@
 
                 		    	<label>T-shirt size</label><br>
                 		    	<input name="tshirt" type="text" value="{{.init.Tshirt}}"/><br>
-								<span class="help-block">Size of three T-shirts separated by commas. Example: L,L,XL</span> 
+								<span class="help-block">本队三位队员所需要的T恤码数，用逗号隔开。例如：L，L，XL</span> 
+								<span class="help-block">衣服大小请参考下表</span> 
+								<img src="static/img/size.jpg"> <br><br>
 
 				    	<input type="hidden" name="uid" value="{{.init.Tid}}">
 					<button type="submit" class="btn btn-success">Submit</button>
