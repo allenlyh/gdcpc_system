@@ -28,6 +28,9 @@
 						<th>                      
 							<center>Contestant3</center>
 						</th>
+						<th>                      
+							<center>T-shirt</center>
+						</th>
 					</tr>
 				</thead>
 				<tbody>
@@ -39,6 +42,7 @@
 							<td>
 								<center>{{$val.Coachnamech}}</center>
 								<center>{{$val.Coachnameen}}</center>
+								<center>{{$val.Coachemail}}</center>
 							</td>
 							<td>
 								<center>{{$val.School}}</center>
@@ -67,6 +71,9 @@
 								<center><font {{if compare $val.Sex3 1}} color="red" {{end}}>{{$val.Mem3enname}}</font></center>
 								<center><font {{if compare $val.Sex3 1}} color="red" {{end}}>{{$val.Mem3email}}</font></center>
 							</B>
+							</td>
+							<td>
+								<center>{{$val.Tshirt}}</center>
 							</td>
 						</tr>
 					{{end}}
@@ -98,6 +105,9 @@
 						<th>                      
 							<center>Contestant3</center>
 						</th>
+						<th>                      
+							<center>T-shirt</center>
+						</th>
 					</tr>
 				</thead>
 				<tbody>
@@ -109,6 +119,7 @@
 							<td>
 								<center>{{$val.Coachnamech}}</center>
 								<center>{{$val.Coachnameen}}</center>
+								<center>{{$val.Coachemail}}</center>
 							</td>
 							<td>
 								<center>{{$val.School}}</center>
@@ -137,6 +148,9 @@
 								<center><font {{if compare $val.Sex3 1}} color="red" {{end}}>{{$val.Mem3enname}}</font></center>
 								<center><font {{if compare $val.Sex3 1}} color="red" {{end}}>{{$val.Mem3email}}</font></center>
 							</B>
+							</td>
+							<td>
+								<center>{{$val.Tshirt}}</center>
 							</td>
 						</tr>
 					{{end}}

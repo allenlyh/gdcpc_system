@@ -12,6 +12,7 @@ type Teams struct {
 	Region      string
 	Coachnamech string
 	Coachnameen string
+	Coachemail	string
 	School      string
 	Mem1chname  string
 	Mem1enname  string
@@ -25,6 +26,7 @@ type Teams struct {
 	Mem3enname  string
 	Mem3email   string
 	Sex3        int
+	Tshirt	string
 }
 
 func init() {

@@ -85,6 +85,8 @@ func (this *EditCoachController) Post() {
 		this.Data["warning"] = check_err
 		flag = 1
 	}
+	coach.Accomodate = this.GetString("accomodate")
+	coach.Tshirt = this.GetString("tshirt")
 	if flag == 1 {
 		this.Data["init"] = coach
 		this.TplNames = "edit_coach.tpl"

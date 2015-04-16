@@ -40,6 +40,9 @@
                 		    	<label>School Name*</label><br>
 					<input name="school" type="text"/><br><br>
 
+                		    	<label>T-shirt</label><br>
+					<input name="tshirt" type="text"/><br><br>
+
 				    	<input type="hidden" name="uid" value="{{.init.Uid}}">
 					<button type="submit" class="btn btn-success">Submit</button>
 				</fieldset>

@@ -37,6 +37,12 @@
                 		    	<label>School Name</label><br>
 					<input name="school" type="text" value="{{.init.School}}"/><br><br>
 
+                		    	<label>T-shirt</label><br>
+					<input name="tshirt" type="text" value="{{.init.Tshirt}}"/><br><br>
+
+                		    	<label>5月23日晚需要在大学城东苑宾馆住宿名单（包括教练以及队员，以逗号隔开）</label><br>
+					<input name="accomodate" type="text" value="{{.init.Accomodate}}"/><br><br>
+
 				    	<input type="hidden" name="uid" value="{{.init.Uid}}">
 					<button type="submit" class="btn btn-success">Submit</button>
 				</fieldset>

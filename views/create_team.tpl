@@ -15,7 +15,7 @@
 					{{ end }}
 				       	<label class="radio-inline">
 				       		<input type="radio"  value="ZhuHai" name="region" {{if compare .init.Region "ZhuHai"}} checked="true" {{end}}><label id="radio_label">珠海赛区</label>
-					</label>
+						</label>
 				       	<label class="radio-inline">
 				       		<input type="radio"  value="GuangZhou" name="region" {{if compare .init.Region "GuangZhou"}} checked="true" {{end}}><label id="radio_label">广州赛区</label>
 				       	</label><br>
@@ -71,12 +71,16 @@
 				       	<label class="radio-inline">
 				       		<input type="radio"  value="0" name="sex3" {{if compare .init.Sex3 0}} checked="true" {{end}}><label id="radio_label">Male</label>
 					</label>
-				       	<label class="radio-inline">
+					<label class="radio-inline">
 				       		<input type="radio"  value="1" name="sex3" {{if compare .init.Sex3 1}} checked="true" {{end}}><label id="radio_label">Female</label>
-				       	</label><br>
+							</label><br>
 
                 		    	<label>Member 3 email*</label><br>
                 		    	<input name="mem3_email" type="text" value="{{.init.Mem3email}}"/><br>
+
+                		    	<label>T-shirt size</label><br>
+                		    	<input name="tshirt" type="text" value="{{.init.Tshirt}}"/><br>
+								<span class="help-block">Size of three T-shirts separated by commas. Example: L,L,XL</span> 
 
 				    	<input type="hidden" name="uid" value="{{.init.Tid}}">
 					<button type="submit" class="btn btn-success">Submit</button>
