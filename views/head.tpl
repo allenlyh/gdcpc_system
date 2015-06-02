@@ -32,6 +32,7 @@
 				{{ if compare .uid 1 }} <li><a href="/show_team">All Teams</a></li> {{ end }}
 				{{ if compare .uid 1 }} <li><a href="/show_coachs">All Coaches</a></li> {{ end }}
 			{{ end }}
+                        <li><a href="/download">Download</a></li>
                     </ul>
                     <ul class="nav navbar-nav pull-right">
 			{{ if $.logined }}

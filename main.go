@@ -23,5 +23,6 @@ func init() {
 
 func main() {
 	orm.RunCommand()
+	beego.SetStaticPath("/download", "download")
 	beego.Run()
 }

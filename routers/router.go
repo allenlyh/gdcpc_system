@@ -17,4 +17,5 @@ func init() {
 	beego.Router("/show_file", &controllers.ShowFileController{})
 	beego.Router("/show_coachs", &controllers.ShowCoachsController{})
 	beego.Router("/action", &controllers.ActionController{})
+	beego.Router("/download", &controllers.DownloadController{})
 }
