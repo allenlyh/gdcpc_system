@@ -30,6 +30,7 @@
                         	<li><a href="/create_team">Create Team</a></li>
                         	<li><a href="/edit_coach">Setting</a></li>
 				{{ if compare .uid 1 }} <li><a href="/show_team">All Teams</a></li> {{ end }}
+				{{ if compare .uid 1 }} <li><a href="/show_coachs">All Coaches</a></li> {{ end }}
 			{{ end }}
                     </ul>
                     <ul class="nav navbar-nav pull-right">

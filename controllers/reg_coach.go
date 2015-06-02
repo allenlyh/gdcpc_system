@@ -69,6 +69,9 @@ func (this *RegCoachController) Post() {
 		this.TplNames = "reg_coach.tpl"
 		return
 	}
+	coach.Tshirt = this.GetString("tshirt")
+	coach.Shareroom = 0
+
 	coach.Insert()
 	this.SetSession("logined", 1)
 	this.SetSession("uid", coach.Uid)

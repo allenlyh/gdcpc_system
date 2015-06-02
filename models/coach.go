@@ -12,6 +12,9 @@ type Coach struct {
 	Enname   string
 	School   string
 	Email    string
+	Tshirt	string
+	Shareroom int
+	Accomodate	string
 	Admin    int8     `orm:"default(0)"`
 	Teams    []*Teams `orm:"reverse(many)"`
 }
@@ -55,4 +58,13 @@ func (this *Coach) Update() error {
 	o := orm.NewOrm()
 	_, err := o.Update(this)
 	return err
+}
+
+func (this *Coach) GetAllCoachs() ([]Coach, error) {
+	var (
+		all []Coach
+	)
+	o := orm.NewOrm()
+	_, err := o.QueryTable("coach").All(&all)
+	return all, err
 }

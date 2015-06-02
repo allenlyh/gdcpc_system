@@ -38,6 +38,10 @@ func (this *CreateTeamController) Get() {
 			return
 		}
 		this.Data["init"] = team
+	//} else {
+	//	this.Data["warning"] = "You can't create team now."
+	//	this.TplNames = "warning.tpl"
+	//	return
 	}
 	this.TplNames = "create_team.tpl"
 }
@@ -136,10 +140,16 @@ func (this *CreateTeamController) Post() {
 		flag = 1
 	}
 	team.Sex3, check_err = strconv.Atoi(this.GetString("sex3"))
+	team.Tshirt, check_err = CheckNotEmpty(this.GetString("tshirt"))
+	if check_err != nil {
+		this.Data["warning"] = check_err
+		flag = 1
+	}
 	team.Coach = &coach
 	team.School = coach.School
 	team.Coachnamech = coach.Chname
 	team.Coachnameen = coach.Enname
+	team.Coachemail = coach.Email
 	fmt.Println(err)
 	if flag == 1 {
 		this.Data["init"] = team

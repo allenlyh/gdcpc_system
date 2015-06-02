@@ -1,5 +1,22 @@
 {{template "head.tpl" .}}
 
+<!--
+<div class="container">
+	<div class="row-fluid">
+		<div class="span12">
+			<h1 class="text-center">
+				报名时间已经截止！如有问题，请咨询管理员。
+			</h1>
+			<br>
+		</div>
+	</div>
+</div>
+-->
+
+<style>
+img{ width:200px; height:150px; margin:0 auto; }
+</style>
+
 <div class="container theme-showcase" role="main">
 	<div class="row">
 		<div class="span12">
@@ -15,7 +32,7 @@
 					{{ end }}
 				       	<label class="radio-inline">
 				       		<input type="radio"  value="ZhuHai" name="region" {{if compare .init.Region "ZhuHai"}} checked="true" {{end}}><label id="radio_label">珠海赛区</label>
-					</label>
+						</label>
 				       	<label class="radio-inline">
 				       		<input type="radio"  value="GuangZhou" name="region" {{if compare .init.Region "GuangZhou"}} checked="true" {{end}}><label id="radio_label">广州赛区</label>
 				       	</label><br>
@@ -71,12 +88,18 @@
 				       	<label class="radio-inline">
 				       		<input type="radio"  value="0" name="sex3" {{if compare .init.Sex3 0}} checked="true" {{end}}><label id="radio_label">Male</label>
 					</label>
-				       	<label class="radio-inline">
+					<label class="radio-inline">
 				       		<input type="radio"  value="1" name="sex3" {{if compare .init.Sex3 1}} checked="true" {{end}}><label id="radio_label">Female</label>
-				       	</label><br>
+							</label><br>
 
                 		    	<label>Member 3 email*</label><br>
                 		    	<input name="mem3_email" type="text" value="{{.init.Mem3email}}"/><br>
+
+                		    	<label>T-shirt size</label><br>
+                		    	<input name="tshirt" type="text" value="{{.init.Tshirt}}"/><br>
+								<span class="help-block">本队三位队员所需要的T恤码数，用逗号隔开。例如：L，L，XL</span> 
+								<span class="help-block">衣服大小请参考下表</span> 
+								<img src="static/img/size.jpg"> <br><br>
 
 				    	<input type="hidden" name="uid" value="{{.init.Tid}}">
 					<button type="submit" class="btn btn-success">Submit</button>

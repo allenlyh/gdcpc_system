@@ -12,6 +12,7 @@ type Teams struct {
 	Region      string
 	Coachnamech string
 	Coachnameen string
+	Coachemail	string
 	School      string
 	Mem1chname  string
 	Mem1enname  string
@@ -25,6 +26,7 @@ type Teams struct {
 	Mem3enname  string
 	Mem3email   string
 	Sex3        int
+	Tshirt	string
 }
 
 func init() {
@@ -45,7 +47,7 @@ func (this *Teams) GetAllTeams(region string) ([]Teams, error) {
 		all []Teams
 	)
 	o := orm.NewOrm()
-	_, err := o.QueryTable("teams").Filter("Region", region).OrderBy("School").All(&all)
+	_, err := o.QueryTable("teams").Filter("Region", region).OrderBy("School", "Coach").All(&all)
 	return all, err
 }
 

@@ -28,6 +28,14 @@
 
                 		    	<label>School Name</label><br>
 					<p> {{.show.School}} </p>
+
+<!--                		    	<label>T-shirt</label><br>
+					<p> {{.show.Tshirt}} </p> -->
+
+                		    	<label>5月23日晚需要在大学城东苑宾馆住宿名单（包括教练以及队员）</label><br>
+					<p> {{.show.Accomodate}} </p>
+
+					<label>{{if compare .show.Shareroom 0}} 愿意 {{else}} 不愿意 {{end}} 拼房 </label>
 				</fieldset>
 			</form>
 <!--			<button type="button" class="btn btn-success" onclick="window.location='/edit_coach'">Setting</button><br> -->
@@ -49,6 +57,9 @@
 						</th>                      
 						<th>                      
 							<center>Contestant3</center>
+						</th>
+						<th>                      
+							<center>T-shirt</center>
 						</th>
 						<th>                      
 							<center>Action</center>
@@ -87,6 +98,10 @@
 							</B>
 							</td>
 							<td>
+								<br>
+								<center>{{$val.Tshirt}}</center>
+							</td>
+							<td>
 								<button type="button" class="btn btn-primary" onclick="window.location='/create_team?tid={{$val.Tid}}'">Edit</button>
 								<button type="button" class="btn btn-danger" onclick="window.location='/action?action=DeleteTeam&tid={{$val.Tid}}'">Delete</button>
 							</td>
@@ -113,6 +128,9 @@
 						</th>                      
 						<th>                      
 							<center>Contestant3</center>
+						</th>
+						<th>                      
+							<center>T-shirt</center>
 						</th>
 						<th>                      
 							<center>Action</center>
@@ -149,6 +167,10 @@
 								<center><font {{if compare $val.Sex3 1}} color="red" {{end}}>{{$val.Mem3enname}}</font></center>
 								<center><font {{if compare $val.Sex3 1}} color="red" {{end}}>{{$val.Mem3email}}</font></center>
 							</B>
+							</td>
+							<td>
+								<br>
+								<center>{{$val.Tshirt}}</center>
 							</td>
 							<td>
 								<button type="button" class="btn btn-primary" onclick="window.location='/create_team?tid={{$val.Tid}}'">Edit</button>
